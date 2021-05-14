@@ -1,8 +1,11 @@
 {
-    "name": "2618094/php-laravel-vault",
+    "name": "yasdelyal/php-laravel-vault",
     "description": "Laravel package for HashiCorp Vault",
     "type": "library",
     "license": "MIT",
+    "keywords": [
+        "laravel", "Vault", "HashiCorp"
+    ],
     "authors": [
         {
             "name": "Maksim Mikhailov",
@@ -10,30 +13,42 @@
         }
     ],
     "require": {
-        "php": "^7.4 || ^8.0",
-        "illuminate/support": "^6|^7|^8",
-        "csharpru/vault-php": "^4.2"
+        "php": "^7.2.5 || ^8.0",
+        "illuminate/support": "^5.8|^6|^7|^8",
+        "illuminate/console": "^5.8|^6|^7|^8",
+        "csharpru/vault-php": "^4.2",
+        "guzzlehttp/guzzle": "^7.3",
+        "http-interop/http-factory-guzzle": "^1.0"
     },
     "require-dev": {
         "orchestra/testbench": "^4.0",
         "mockery/mockery": "^1.0",
-        "phpunit/phpunit": "^9.0"
+        "phpunit/phpunit": "^8.0",
+        "squizlabs/php_codesniffer": "^3.6"
     },
     "autoload": {
         "psr-4": {
-            "TempNamespace\\LaravelVault\\": "src/"
+            "YaSdelyal\\LaravelVault\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "TempNamespace\\LaravelVault\\Tests\\": "tests/"
+            "YaSdelyal\\LaravelVault\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "TempNamespace\\LaravelVault\\LaravelVaultServiceProvider"
-            ]
+                "YaSdelyal\\LaravelVault\\LaravelVaultServiceProvider"
+            ],
+            "aliases": {
+                "Vault": "YaSdelyal\\LaravelVault\\Facades\\Vault"
+            }
         }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "phpcs": "vendor/bin/phpcs --standard=phpcs.xml",
+        "phpcbf": "vendor/bin/phpcbf --standard=phpcs.xml"
     }
 }

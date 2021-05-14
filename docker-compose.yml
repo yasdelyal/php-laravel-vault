@@ -1,0 +1,12 @@
+version: '3'
+services:
+  php:
+    image: php:7.2
+    volumes: [ "./:/app" ]
+  vault:
+    image: vault:1.5.8
+    environment:
+      - VAULT_DEV_ROOT_TOKEN_ID=123
+      - VAULT_ADDR=http://127.0.0.1:8200
+    ports:
+      - '127.0.0.1:8200:8200'
